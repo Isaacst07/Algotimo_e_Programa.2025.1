@@ -1,0 +1,43 @@
+def principal():
+    print('----------------------------------------------------------------------------------')
+    print('                                Economize na viagem                               ')
+    print('----------------------------------------------------------------------------------')
+    
+    distancia = float(input('Distância total prevista da viagem (km): '))
+    percentual_eletrico = float(input('Percentual da viagem com o motor elétrico (%): '))
+    litros_km_gasolina = float(input('Com 1 litro de gasolina seu carro faz quantos quilômetros (km/l): '))
+    valor_gasolina = float(input('Valor da gasolina (R$): '))
+    litros_km_alcool = float(input('Com 1 litro de álcool seu carro faz quantos quilômetros (km/l): '))
+    valor_alcool = float(input('Valor do álcool (R$): '))
+    
+    distancia_eletrica = eletrico(distancia, percentual_eletrico)
+    resto_km_da_viagem = resto_viagem(distancia, distancia_eletrica)
+    litros_necessarios_gasolina = litros_gasolina(resto_km_da_viagem, litros_km_gasolina)
+    litros_necessarios_alcool = litros_alcool(resto_km_da_viagem, litros_km_alcool)
+    gasto_gasolina = litros_necessarios_gasolina * valor_gasolina
+    gasto_alcool = litros_necessarios_alcool * valor_alcool
+
+    print('----------------------------------------------------------------------------------')
+    print('                           Quantos Litros abastecer?                             ')
+    print('----------------------------------------------------------------------------------')
+    print(f'Uma viagem de {distancia} km, com {percentual_eletrico}% feita com motor elétrico.')
+    print(f'Isso significa que {distancia_eletrica:.2f} km serão feitos com o motor elétrico.')
+    print(f'Sobrando {resto_km_da_viagem:.2f} km para serem feitos com combustível.')
+    print(f'Com gasolina ({litros_km_gasolina} km/l), será necessário {litros_necessarios_gasolina:.2f} litros.')
+    print(f'Isso custará R${gasto_gasolina:.2f}.')
+    print(f'Com álcool ({litros_km_alcool} km/l), será necessário {litros_necessarios_alcool:.2f} litros.')
+    print(f'Isso custará R${gasto_alcool:.2f}.')
+
+def eletrico(distancia, percentual_eletrico):
+    return (distancia / 100) * percentual_eletrico
+
+def resto_viagem(distancia, distancia_eletrica):
+    return distancia - distancia_eletrica
+
+def litros_gasolina(resto_km_da_viagem, litros_km_gasolina):
+    return resto_km_da_viagem / litros_km_gasolina
+
+def litros_alcool(resto_km_da_viagem, litros_km_alcool):
+    return resto_km_da_viagem / litros_km_alcool
+
+principal()

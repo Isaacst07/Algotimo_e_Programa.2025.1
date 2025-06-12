@@ -1,0 +1,92 @@
+
+def principal():
+    print('----------------------------------------------------------------------------------')
+    print('                       Certificados de Depósitos Bancários                        ')
+    print('----------------------------------------------------------------------------------')
+
+    valor_investido = float(input('Valor investido (R$): '))
+    print ('-----------------------------------')
+    taxa_cdb = int(input('Taxa (1% a 20% a.a): '))
+    print ('-----------------------------------')
+    tempo_mes = int(input('Tempo (Ao ano): '))
+
+    print('                                                                          ')
+
+    print('----------------------------------------------------------------------------------')
+    print('                        Crédito Direto ao Consumidor                              ')
+    print('----------------------------------------------------------------------------------')
+
+    emprestimo = float(input('Valor do Empréstimo(R$): '))
+    print ('-----------------------------------')
+    taxa_cdc = int(input('Taxa (1% a 17% a.m): '))
+    print ('-----------------------------------')
+    tempo_ano = int(input('Tempo (Ao mês): '))
+    print ('-----------------------------------')
+    parcela = int(input('Número de Parcelas (x24,x36 e x60): '))
+
+    montante_cdb = juros_compostos(valor_investido, taxa_cdb, tempo_mes)
+    juros_cdb = juros(montante_cdb, valor_investido)
+    montante_cdc = juros_compostos(emprestimo, taxa_cdc, tempo_ano) 
+    juros_cdc = juros(montante_cdc, emprestimo)
+    parcelamento_cdc = montante_cdc / parcela
+    lucro_do_banco = juros_cdc - juros_cdb
+
+    print('                                                                          ')
+    print('                                                                          ')
+
+    print('----------------------------------------------------------------------------------')
+    print('                               Recibo do Banco                                    ')
+    print('----------------------------------------------------------------------------------')
+
+    print('                                                                          ')
+
+    print('>>> CDB <<<')
+    print(f'O investimento (R$): {valor_investido:.2f}R$ ')
+    print(f'Sob juros de {taxa_cdb}% ao ano')
+    print(f'gera montante: {montante_cdb:.2f}R$')
+    print(f'Sendo o juros (R$): {juros_cdb:.2f}R$ .')
+
+    print('                                                                          ')
+
+    print('>>> CDC <<<')
+    print(f'O Empréstimo (R$): {emprestimo:.2f}R$ ')
+    print(f'Sob juros de {taxa_cdc}% ao ano')
+    print(f'gera montante: {montante_cdc:.2f}R$')
+    print(f'Sendo o juros (R$): {juros_cdc:.2f}R$ .')
+    print(f'E o valor das parcelas do empréstimo será {parcelamento_cdc:.2f}R$ de {parcela} vezes.')
+
+    print('                                                                          ')
+
+    print('>>> LUCRO DO BANCO <<<')
+    print (f'O  lucro do banco será {lucro_do_banco:.2f}R$ ')
+    
+    print('                                                                          ')
+    
+
+def juros_compostos(capital, taxa, tempo):
+    m = capital * ((1 + (taxa / 100)) ** tempo)
+    return m
+
+
+def juros(montante, capital):
+    juros = montante - capital
+    return juros
+
+
+def cdb(valor_investido, taxa_cdb, tempo_mes):
+    return juros_compostos(valor_investido, taxa_cdb, tempo_mes)
+
+
+def cdc(emprestimo, taxa_cdc, tempo_ano):
+    return juros_compostos(emprestimo, taxa_cdc, tempo_ano)
+
+
+def juros_cdb(montante_cdb, valor_investido):
+    return juros(montante_cdb, valor_investido)
+
+
+def juros_cdc(montante_cdc, emprestimo):
+    return juros(montante_cdc, emprestimo)
+
+
+principal()
