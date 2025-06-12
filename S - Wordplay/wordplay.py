@@ -44,7 +44,7 @@ def verificar_tamanho(tamanho: int, arquivo):
             print(palavra)
             contador_filtro += 1
 
-    percentual = (contador_filtro / contador) * 100
+    percentual = (contador_filtro / contador) * 1000
     print(f'Percentual de palavras de tamanho {tamanho}: {contador_filtro}/{contador} - ({percentual:.2f}%)')
 
 
