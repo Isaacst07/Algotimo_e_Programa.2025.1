@@ -5,7 +5,7 @@ import random
 def inicializar_vetor():
     b.limpar_tela()
 
-    menu = '''' Você quer ?
+    menu = '''\tVocê quer ?
             1 - Vetor Automático
             2 - Adicionar Valores Manualmente
             3 - Carregar valores de um arquivo

@@ -8,6 +8,7 @@ def main():
     vetor = []
 
     print('Óla, vamos iniciar o vetor!')
+    print()
     escolha = u.obter_numero_da_faixa('Você quer inicializar ou fazer load do vetor(sim = 1(Inicilizar vetor) / não = 0 (Fazer load)): ',0, 1)
 
     if escolha == 1:
