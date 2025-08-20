@@ -130,12 +130,14 @@ def menor_valor(colecao):
     print(f'O maior valor é: {menor} na posição {posicao_menor}')
 
 
-def reduzir(colecao, funcao_redutora, acumulado):
-    
-    for item in colecao:
-        acumulado = funcao_redutora(acumulado, item)
+def mapear(colecao,funcao_transformadora):
+    nova_colecao = []
 
-    return acumulado
+    for item in colecao:
+        item_transformado = funcao_transformadora(item)
+        nova_colecao.append(item_transformado)
+
+    return nova_colecao
 
 
 def filtrar(colecao, condicao):
@@ -148,14 +150,12 @@ def filtrar(colecao, condicao):
     return nova_colecao
 
 
-def mapear(colecao,funcao_transformadora):
-    nova_colecao = []
-
+def reduzir(colecao, funcao_redutora, acumulado):
+    
     for item in colecao:
-        item_transformado = funcao_transformadora(item)
-        nova_colecao.append(item_transformado)
+        acumulado = funcao_redutora(acumulado, item)
 
-    return nova_colecao
+    return acumulado
 
 
 def subtistuir_valores_negativos(colecao, minimo, maximo):
@@ -183,7 +183,7 @@ def embaralhar(colecao):
     nova_colecao = []
     indexs = len(colecao) - 1
 
-    for _ in range (len(colecao)):
+    for _ in range (0, len(colecao), 1):
         item_removido = colecao.pop(random.randint(0, indexs))
         nova_colecao.append(item_removido)
         indexs -= 1

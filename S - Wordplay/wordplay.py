@@ -4,16 +4,18 @@ import utils
 def main():
     utils.limpar_tela()
     
-    menu = '''----------MENU----------
+    menu = '''
+>>>>>>>>>>> WORDPLAY <<<<<<<<<<<
 1 - Palavras sem a letra desejada
 2 - Palavras com o tamanho N
 
 0 - Sair
-'''
+
+>>> '''
 
     while True:
         print(menu)
-        opcao = utils.obter_numero_entre_int('Qual sua opção(1/2/0): ', 0, 2)
+        opcao = utils.obter_numero_entre_int(menu, 0, 2)
 
         if opcao == 0:
             break
